@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Category from "./Category";
+import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
   const { data, fetchAllProducts } = getData();
@@ -40,6 +41,7 @@ const Carousel = () => {
   };
   const SampleNextArrow = (props) => {
     const { className, style, onClick } = props;
+    const navigate = useNavigate();
     return (
       <div onClick={onClick} className={`arrow ${className}`}>
         <AiOutlineArrowRight
@@ -92,7 +94,10 @@ const Carousel = () => {
                   <p className="md:w-[500px] line-clamp-3 text-gray-400 pr-7">
                     {item.description}
                   </p>
-                  <button className="bg-gradient-to-r from-red-500 to-purple-500 text-white px-3 py-2 rounded-md cursor-pointer mt-2">
+                  <button
+                    onClick={() => navigate(`/products/${item.id}`)}
+                    className="bg-gradient-to-r from-red-500 to-purple-500 text-white px-3 py-2 rounded-md cursor-pointer mt-2"
+                  >
                     Shop Now
                   </button>
                 </div>
