@@ -11,6 +11,8 @@ const Carousel = () => {
   const { data, fetchAllProducts } = getData();
   console.log(data);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchAllProducts();
   }, []);
